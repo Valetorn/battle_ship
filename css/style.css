@@ -1,0 +1,50 @@
+body {
+    background-color: #000000;
+}
+.board {
+    position: relative;
+    width: 1024px;
+    height: 863px;
+    margin: 0 auto;
+    background-image: url(../img/board.jpg);
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
+.board__message-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgb(83, 175, 19);
+}
+.table {
+    position: absolute;
+    top: 98px;
+    left: 173px;
+    border-spacing: 0;
+}
+.table__cell {
+    width: 94px;
+    height: 94px;
+}
+.find-ship {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 15px;
+    background-color: rgb(83, 175, 19);
+}
+.find-ship__input {
+    font-size: 1em;
+    background-color: rgb(152, 207, 113);
+    border-color: rgb(83, 175, 19);
+}
+.hit {
+    background-image: url(../img/ship.png);
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
+.miss {
+    background-image: url(../img/miss.png);
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
