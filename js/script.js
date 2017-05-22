@@ -64,11 +64,12 @@ var controller = {
             this.guess++;
             var hit = model.fire(location);
             if (hit && model.shipsSunk === model.numShips) {
-                view.displayMessage('You sank all my battleships, in ' + this.guesses + 'guesses');
+                view.displayMessage('You sank all my battleships, in ' + this.guesses + ' guesses');
             }
         }
     },
 };
+
 var parseGuess = function (guess) {
     var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
     if (guess === null || guess.length !== 2) {
@@ -80,10 +81,31 @@ var parseGuess = function (guess) {
         if (isNaN(row) || isNaN(column)) {
             alert('Oops, that isn\'t on the board.');
         } else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
-            alert('Oops, that|\'s off the board!');
+            alert('Oops, that\'s off the board!');
         } else {
             return row + column;
         }
     }
     return null;
 };
+var init = function () {
+    var fireButton = document.getElementById('fireInput');
+    fireButton.addEventListener('click', handlerFireButton);
+    var guessInput = document.getElementById('guessInput');
+    guessInput.addEventListener('keypress', handlerKeyPress);
+};
+var handlerFireButton = function () {
+    var guessInput = document.getElementById('guessInput');
+    var guess = guessInput.value;
+    controller.processGuess(guess);
+    guessInput.value = '';
+};
+var handlerKeyPress = function (evt) {
+    var fireButton = document.getElementById('fireInput');
+    if (evt.keyCode === 13) {
+        evt.preventDefault();
+        fireButton.click();
+    }
+};
+
+window.onload = init;
